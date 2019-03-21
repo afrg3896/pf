@@ -1,0 +1,19 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title text-center>Perfil</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list>
+        <ion-item text-center *ngFor="let item of info">
+            <img *ngIf="item.imagen === ''" src="assets/hogar.png">
+            <h1 text-center>{{item.nombre}}</h1>
+            <h1 text-center>{{item.apellido}}</h1>
+            <p>{{item.email}}</p>
+            <p>{{item.cel}}</p>
+            <p>{{item.direccion}}</p>
+            <p>{{item.municipio}}</p>
+        </ion-item>
+    </ion-list>
+</ion-content>

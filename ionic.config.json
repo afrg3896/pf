@@ -1,5 +1,7 @@
 {
   "name": "pf",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }

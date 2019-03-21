@@ -1,0 +1,16 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-buttons start>
+
+            <button ion-button (click)="cerrar_modal()">
+                      Cerrar
+                  </button>
+
+        </ion-buttons>
+        <ion-title>Imagen</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <img [src]="item.img">
+</ion-content>

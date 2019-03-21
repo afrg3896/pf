@@ -1,0 +1,76 @@
+<ion-header>
+    <ion-navbar>
+        <ion-buttons start>
+
+            <button ion-button (click)="cerrar_modal()">
+            Cerrar
+        </button>
+
+        </ion-buttons>
+        <ion-title>Calificar</ion-title>
+        <ion-buttons end>
+
+            <button ion-button (click)="calificar_modal()">
+            Calificar
+        </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+    <ion-item>
+        <ion-label>Claridad</ion-label>
+        <ion-range min="1" max="5" pin="true" [(ngModel)]="claridad" color="secondary" (ngModelChange)="onChangeTrain($event)">
+            <ion-icon range-left name="sad"></ion-icon>
+            <ion-label range-left>1</ion-label>
+            <ion-label range-right>5</ion-label>
+            <ion-icon range-right name="heart"></ion-icon>
+        </ion-range>
+    </ion-item>
+    <ion-item>
+        <ion-label>Facilidad de Implemetación</ion-label>
+        <ion-range min="1" max="5" [(ngModel)]="facilidad" color="secondary" (ngModelChange)="onChangeTrain($event)">
+            <ion-icon range-left name="sad"></ion-icon>
+            <ion-label range-left>1</ion-label>
+            <ion-label range-right>5</ion-label>
+            <ion-icon range-right name="heart"></ion-icon>
+        </ion-range>
+    </ion-item>
+    <ion-item>
+        <ion-label>Costo</ion-label>
+        <ion-range min="1" max="5" [(ngModel)]="costo" color="secondary" (ngModelChange)="onChangeTrain($event)">
+            <ion-icon range-left name="sad"></ion-icon>
+            <ion-label range-left>1</ion-label>
+            <ion-label range-right>5</ion-label>
+            <ion-icon range-right name="heart"></ion-icon>
+        </ion-range>
+    </ion-item>
+    <ion-item>
+        <ion-label>Duración</ion-label>
+        <ion-range min="1" max="5" [(ngModel)]="duracion" color="secondary" (ngModelChange)="onChangeTrain($event)">
+            <ion-icon range-left name="sad"></ion-icon>
+            <ion-label range-left>1</ion-label>
+            <ion-label range-right>5</ion-label>
+            <ion-icon range-right name="heart"></ion-icon>
+        </ion-range>
+    </ion-item>
+    <ion-item>
+        <ion-label>Aceptación de los niños</ion-label>
+        <ion-range min="1" max="5" [(ngModel)]="aceptacion" color="secondary" (ngModelChange)="onChangeTrain($event)">
+            <ion-icon range-left name="sad"></ion-icon>
+            <ion-label range-left>1</ion-label>
+            <ion-label range-right>5</ion-label>
+            <ion-icon range-right name="heart"></ion-icon>
+        </ion-range>
+    </ion-item>
+    <ion-item>
+        <ion-label>Agrado</ion-label>
+        <ion-range min="1" max="5" [(ngModel)]="agrado" color="secondary" (ngModelChange)="onChangeTrain($event)">
+            <ion-icon range-left name="sad"></ion-icon>
+            <ion-label range-left>1</ion-label>
+            <ion-label range-right>5</ion-label>
+            <ion-icon range-right name="heart"></ion-icon>
+        </ion-range>
+    </ion-item>
+</ion-content>

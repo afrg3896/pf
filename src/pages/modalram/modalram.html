@@ -1,0 +1,116 @@
+<ion-header>
+    <ion-navbar>
+        <ion-buttons left>
+
+            <button ion-button (click)="cerrar_modal()">
+              Cerrar
+          </button>
+
+        </ion-buttons>
+        <ion-title>Formato de Veracidad</ion-title>
+
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <form [formGroup]="myFormRam" (ngSubmit)="addRam()">
+        <ion-list inset>
+            <h2 text-center>Formato Veracidad Informacion Ficha Caracterización Padres</h2>
+            <br>
+            <p>Yo {{item.parentname}} {{item.parentlastname}} , identidicado con Cédula de ciudadania No. &nbsp;&nbsp; {{item.cedula}} &nbsp;&nbsp; de
+                <ion-input formControlName="expedicion" placeholder="Lugar de expedición"></ion-input>
+                , padre / madre o acudiente de el/la niño/a {{item.nombre}} {{item.apellido}} , identificado con NUIP No. {{item.nuip}} , usuario de la unidad de servicio
+                <ion-input formControlName="servicio" type="text" placeholder="Unidad de Servicio"></ion-input>
+                , manifiesto que la información registrada en la ficha de caracterización es verdadera, correcta y completa. En costancia se firma en
+                <ion-input formControlName="lugar" type="text" placeholder="Municipio"></ion-input>
+                <ion-item no-lines>
+                    <ion-label>,a los</ion-label>
+                    <ion-select formControlName="dia">
+                        <ion-option value="1">1</ion-option>
+                        <ion-option value="2">2</ion-option>
+                        <ion-option value="3">3</ion-option>
+                        <ion-option value="4">4</ion-option>
+                        <ion-option value="5">5</ion-option>
+                        <ion-option value="6">6</ion-option>
+                        <ion-option value="7">7</ion-option>
+                        <ion-option value="8">8</ion-option>
+                        <ion-option value="9">9</ion-option>
+                        <ion-option value="10">10</ion-option>
+                        <ion-option value="11">11</ion-option>
+                        <ion-option value="12">12</ion-option>
+                        <ion-option value="13">13</ion-option>
+                        <ion-option value="14">14</ion-option>
+                        <ion-option value="15">15</ion-option>
+                        <ion-option value="16">16</ion-option>
+                        <ion-option value="17">17</ion-option>
+                        <ion-option value="18">18</ion-option>
+                        <ion-option value="19">19</ion-option>
+                        <ion-option value="20">20</ion-option>
+                        <ion-option value="21">21</ion-option>
+                        <ion-option value="22">22</ion-option>
+                        <ion-option value="23">23</ion-option>
+                        <ion-option value="24">24</ion-option>
+                        <ion-option value="25">25</ion-option>
+                        <ion-option value="26">26</ion-option>
+                        <ion-option value="27">27</ion-option>
+                        <ion-option value="28">28</ion-option>
+                        <ion-option value="29">29</ion-option>
+                        <ion-option value="30">30</ion-option>
+                        <ion-option value="31">31</ion-option>
+                    </ion-select>
+                </ion-item>
+                <ion-item>
+                    <ion-label>días del mes</ion-label>
+                    <ion-select formControlName="mes">
+                        <ion-option value="Enero">Enero</ion-option>
+                        <ion-option value="Febrero">Febrero</ion-option>
+                        <ion-option value="Marzo">Marzo</ion-option>
+                        <ion-option value="Abril">Abril</ion-option>
+                        <ion-option value="Mayo">Mayo</ion-option>
+                        <ion-option value="Junio">Junio</ion-option>
+                        <ion-option value="Julio">Julio</ion-option>
+                        <ion-option value="Agosto">Agosto</ion-option>
+                        <ion-option value="Septiembre">Septiembre</ion-option>
+                        <ion-option value="Octubre">Octubre</ion-option>
+                        <ion-option value="Noviembre">Noviembre</ion-option>
+                        <ion-option value="Diciembre">Diciembre</ion-option>
+                    </ion-select>
+                </ion-item>
+                <ion-item>
+                    <ion-label>de</ion-label>
+                    <ion-select formControlName="year">
+                        <ion-option value="2019">2019</ion-option>
+                        <ion-option value="2020">2020</ion-option>
+                        <ion-option value="2021">2021</ion-option>
+                        <ion-option value="2022">2022</ion-option>
+                    </ion-select>
+                </ion-item>
+            </p>
+            <br>
+            <h6 text-center>Datos del padre o acudiente del niño</h6>
+            <p>Nombre: {{item.parentname}} {{item.parentlastname}}</p>
+            <p>CC. No. {{item.cedula}}</p>
+            <h6 text-center>Datos del profesional o Agente Educativo que diligencio la ficha</h6>
+            <p *ngFor="let item of info">Nombre: {{item.nombre}} {{item.apellido}}</p>
+            <p *ngFor="let item of info">CC. No. {{item.cedula}}</p>
+
+            <ion-list radio-group formControlName="aceptacion">
+                <ion-list-header text-center>
+                    Acepto la información <br> presentada en este documento
+                </ion-list-header>
+                <ion-item no-lines>
+                    <ion-label>Acepto</ion-label>
+                    <ion-radio value="si" checked="true" mode="md"></ion-radio>
+                </ion-item>
+                <ion-item no-lines>
+                    <ion-label>No Acepto</ion-label>
+                    <ion-radio value="no" mode="md"></ion-radio>
+                </ion-item>
+            </ion-list>
+        </ion-list>
+
+        <div padding>
+            <button ion-button block type="submit" [disabled]="!myFormRam.valid">Añadir</button>
+        </div>
+    </form>
+</ion-content>
