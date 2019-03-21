@@ -2,16 +2,15 @@
 import { Injectable } from '@angular/core';
 import { ToastController, LoadingController } from 'ionic-angular';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { MediaCapture, MediaFile } from '@ionic-native/media-capture';
 import * as firebase from 'firebase';
 
 import 'rxjs/add/operator/map';
-import { File } from '@ionic-native/file';
+
 @Injectable()
 export class CargaArchivoProvider {
   imagenes: ArchivoSubir[] = [];
   constructor(public toastCtrl: ToastController,public afDB: AngularFireDatabase,
-              private mediaCap: MediaCapture, public file:File,public loadingCtrl: LoadingController) {
+              public loadingCtrl: LoadingController) {
     
   }
 
@@ -79,50 +78,7 @@ export class CargaArchivoProvider {
 
     //Firebase Storage
   cargar_video_firebase(archivo:ArchivoSubir){
-    let promesa = new Promise((resolve,reject)=>{
-      this.mediaCap.captureVideo({ limit: 1, duration: 600 }).then((data: MediaFile[]) => {
-        let loading = this.loadingCtrl.create({
-          content: 'Please wait...'
-        });
-      
-        loading.present();
-      
-        let capturedVid = data[0];
-        let localVideoPath = capturedVid.fullPath;
-        let directoryPath = localVideoPath.substr(0, localVideoPath.lastIndexOf('/'));
-        let fileName = localVideoPath.substr(localVideoPath.lastIndexOf('/') + 1); 
-        this.file.readAsArrayBuffer(directoryPath, fileName).then((result) => {
-          console.log(result);
-          let blob = new Blob([result], { type: "video/mp4" });
-          let storeRef = firebase.storage().ref();
-          let nombreArchivo:string = new Date().valueOf().toString();
-          let uploadTask: firebase.storage.UploadTask =
-              storeRef.child(`video/${nombreArchivo}`)
-                      .put(blob);
-              uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
-    
-                () =>{},
-                (error) =>{
-                  console.log('Error al subir ', JSON.stringify(error));
-                  this.mostrar_toast(JSON.stringify(error));
-                  reject();
-                },
-                ()=>{
-                  loading.dismiss();
-                  this.mostrar_toast('Video cargado correctamente');
-                  uploadTask.snapshot.ref.getDownloadURL().then(urlVideo => {
-                    this.cargar_videos(archivo.titulo, urlVideo,archivo.nombre,archivo.rating, nombreArchivo);
-                    }).catch((error) => {
-                             console.log(error);
-                    });
-                  resolve();
-                }
-                 
-                );
-        });
-      });
-    });
-    return promesa;
+
   }
 
     cargar_imgchild_firebase(imagen:string,userid:string,id:any){
